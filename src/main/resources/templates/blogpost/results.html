@@ -3,6 +3,7 @@
 <head>
     <title>Blog Site</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <h3>Blog Post Form</h3>
@@ -11,5 +12,9 @@
 <p th:text="${title}" />
 <p th:text="${author}" />
 <p th:text="${blogEntry}" />
+<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
+<a th:href="@{/blog_posts/new}"><button class= "btn btn-primary">Submit a New Blog Post</button></a>
+<script src="../../webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
 </body>
 </html>

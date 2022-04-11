@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <div th:replace="/fragments/styling :: head-style">
     <title>Blog Site</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Latest compiled and minified CSS -->
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    </div>
 </head>
 <body>
-<h3>Blog Post Form</h3>
-<p>Thank you for your submission!</p>
-<h4>Blog Post:</h4>
-<p th:text="${title}" />
-<p th:text="${author}" />
-<p th:text="${blogEntry}" />
-<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
-<a th:href="@{/blog_posts/new}"><button class= "btn btn-primary">Submit a New Blog Post</button></a>
-<script src="../../webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
+<div th:replace="/fragments/styling :: body-links" >
+<div class="container">
+    <h1>Welcome to Our Blog Post Site!</h1>
+    
+    <div class="row">
+        <div th:each="blog:${posts}">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 th:text="${blog.title}"></h2>
+                    </div>
+                    <div class="panel-body">
+                        <strong><p th:text="${blog.author}"/></strong>
+                        <p th:text="${blog.blogEntry}" />
+                    </div>
+                    <div class="panel-footer">
+                        <div th:replace="/fragments/styling :: head-style" ></div>
+                        <div th:replace="/fragments/styling :: body-links" ></div>
+                        <!--  Link to Destroy -->
+                        Buttons
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <a th:href="@{/blogposts/new}"><button class="btn btn-primary">Submit a New Blog Post</button></a>
+
+</div>
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 </body>
 </html>
